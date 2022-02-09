@@ -28,4 +28,8 @@ public class Bank {
     public void makeWithdrawal(BankAccount bankAccount, double amount) {
         makeOperation(OperationType.WITHDRAWAL, bankAccount, amount);
     }
+
+    public String formatAccountOperations(BankAccount bankAccount) {
+        return "";
+    }
 }
