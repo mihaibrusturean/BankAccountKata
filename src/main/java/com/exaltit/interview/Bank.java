@@ -5,6 +5,7 @@ import com.exaltit.interview.model.Operation;
 import com.exaltit.interview.model.OperationType;
 
 public class Bank {
+
     public void makeDeposit(BankAccount bankAccount, double amount) {
         Operation operation = new Operation(bankAccount.getClient(), OperationType.DEPOSIT, bankAccount.getBalance(), amount);
         if (operation.isOperationValid()) {
@@ -15,5 +16,9 @@ public class Bank {
             operation.markAsDenied();
             bankAccount.addOperation(operation);
         }
+    }
+
+    public void makeWithdrawal(BankAccount bankAccount, double amount) {
+
     }
 }
