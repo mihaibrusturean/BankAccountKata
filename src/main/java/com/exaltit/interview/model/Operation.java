@@ -60,4 +60,15 @@ public class Operation {
     public void markAsDenied() {
         this.operationState = OperationState.DENIED;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("TYPE:").append(this.getOperationType()).append(",")
+                .append("BALANCE:").append(this.getBalance()).append(",")
+                .append("AMOUNT:").append(this.getAmount()).append(",")
+                .append("STATE:").append(this.getOperationState()).append(",")
+                .append("TIMESTAMP:").append(this.getTimestamp())
+                .toString();
+    }
 }

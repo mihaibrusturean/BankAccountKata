@@ -92,7 +92,7 @@ public class BankTest {
         bank.makeDeposit(bankAccount, 100.0);
         String formattedOperations = bank.formatAccountOperations(bankAccount);
         assertTrue(formattedOperations.startsWith("Operations"));
-        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:100.0,STATUS:APPROVED"));
+        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:100.0,STATE:APPROVED"));
     }
 
     @Test
@@ -103,7 +103,7 @@ public class BankTest {
         bank.makeDeposit(bankAccount, -100.0);
         String formattedOperations = bank.formatAccountOperations(bankAccount);
         assertTrue(formattedOperations.startsWith("Operations"));
-        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:100.0,STATUS:DENIED"));
+        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:-100.0,STATE:DENIED"));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class BankTest {
         bank.makeWithdrawal(bankAccount, 100.0);
         String formattedOperations = bank.formatAccountOperations(bankAccount);
         assertTrue(formattedOperations.startsWith("Operations"));
-        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:100.0,STATUS:APPROVED"));
-        assertTrue(formattedOperations.contains("TYPE:WITHDRAWAL,BALANCE:100.0,AMOUNT:100.0,STATUS:APPROVED"));
+        assertTrue(formattedOperations.contains("TYPE:DEPOSIT,BALANCE:0.0,AMOUNT:100.0,STATE:APPROVED"));
+        assertTrue(formattedOperations.contains("TYPE:WITHDRAWAL,BALANCE:100.0,AMOUNT:100.0,STATE:APPROVED"));
     }
 }

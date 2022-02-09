@@ -30,6 +30,9 @@ public class Bank {
     }
 
     public String formatAccountOperations(BankAccount bankAccount) {
-        return "";
+        StringBuilder stringBuilder = new StringBuilder("Operations:[");
+        bankAccount.getOperations()
+                .forEach(operation -> stringBuilder.append(operation.toString()).append(";"));
+        return stringBuilder.append("]").toString();
     }
 }
