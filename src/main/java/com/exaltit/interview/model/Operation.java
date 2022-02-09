@@ -46,7 +46,7 @@ public class Operation {
     //we don't want any setters on this class because we don't want to make any changes to an Operation after it was created
 
     public boolean isOperationValid() {
-        return this.operationType.apply(balance, amount) >= 0;
+        return this.operationType.isValidInput(balance, amount);
     }
 
     public double getBalanceAfterOperation() {

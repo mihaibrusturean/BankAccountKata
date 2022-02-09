@@ -55,8 +55,8 @@ public class BankTest {
         assertEquals(bankAccount.getBalance(), 100.0);
         bank.makeWithdrawal(bankAccount, 100.0);
         assertEquals(bankAccount.getBalance(), 0.0);
-        assertEquals(bankAccount.getOperations().size(), 1);
-        Operation operation = bankAccount.getOperations().get(0);
+        assertEquals(bankAccount.getOperations().size(), 2);
+        Operation operation = bankAccount.getOperations().get(1);
         assertEquals(operation.getOperationType(), OperationType.WITHDRAWAL);
         assertEquals(operation.getOperationState(), OperationState.APPROVED);
     }

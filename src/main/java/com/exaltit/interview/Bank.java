@@ -19,6 +19,14 @@ public class Bank {
     }
 
     public void makeWithdrawal(BankAccount bankAccount, double amount) {
-
+        Operation operation = new Operation(bankAccount.getClient(), OperationType.WITHDRAWAL, bankAccount.getBalance(), amount);
+        if (operation.isOperationValid()) {
+            operation.markAsApproved();
+            bankAccount.addOperation(operation);
+            bankAccount.setNewBalance(operation.getBalanceAfterOperation());
+        } else {
+            operation.markAsDenied();
+            bankAccount.addOperation(operation);
+        }
     }
 }
