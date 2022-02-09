@@ -6,8 +6,11 @@ import com.exaltit.interview.model.OperationType;
 
 public class Bank {
 
-    public void makeDeposit(BankAccount bankAccount, double amount) {
-        Operation operation = new Operation(bankAccount.getClient(), OperationType.DEPOSIT, bankAccount.getBalance(), amount);
+    // operations could be made static, but I am working with the assumption that we will add a list of clients and
+    // bank accounts in this class at some point
+
+    private void makeOperation(OperationType operationType, BankAccount bankAccount, double amount) {
+        Operation operation = new Operation(bankAccount.getClient(), operationType, bankAccount.getBalance(), amount);
         if (operation.isOperationValid()) {
             operation.markAsApproved();
             bankAccount.addOperation(operation);
@@ -18,15 +21,11 @@ public class Bank {
         }
     }
 
+    public void makeDeposit(BankAccount bankAccount, double amount) {
+        makeOperation(OperationType.DEPOSIT, bankAccount, amount);
+    }
+
     public void makeWithdrawal(BankAccount bankAccount, double amount) {
-        Operation operation = new Operation(bankAccount.getClient(), OperationType.WITHDRAWAL, bankAccount.getBalance(), amount);
-        if (operation.isOperationValid()) {
-            operation.markAsApproved();
-            bankAccount.addOperation(operation);
-            bankAccount.setNewBalance(operation.getBalanceAfterOperation());
-        } else {
-            operation.markAsDenied();
-            bankAccount.addOperation(operation);
-        }
+        makeOperation(OperationType.WITHDRAWAL, bankAccount, amount);
     }
 }
